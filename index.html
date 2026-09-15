@@ -68,16 +68,16 @@
     const principles = ["I've always thought through prototypes. AI shortened the distance between an idea and something real.",'Now I can explore more directions, build working experiences, test ridiculous ideas and throw most of them away.',"The technology isn't the interesting part. What it lets me explore is."];
     document.getElementById('principles').innerHTML = principles.map((text,i)=>`<div class="border-t border-[#17201d]/20 pt-4"><span class="text-xs text-[#17201d]/45">0${i+1}</span><p class="mt-5 text-sm leading-relaxed">${text}</p></div>`).join('');
     const experiments = [
-      ['01 / CHILDREN’S BOOK','A small story for children facing something much too big.','#ff614d'],
-      ['02 / SLEEPWELL','A sleep coach that helps you stop trying so hard to sleep.','#17201d','text-[#f3f1eb]'],
-      ['03 / FOXLEY','A clever little fox for decisions that refuse to make themselves.','#e6c5f1'],
-      ['04 / RESOLVE','A place to turn tangled problems into a clear next move.','#b9dcf6'],
-      ['05 / BIXLEY','A travel companion that notices what your itinerary missed.','#f5b928'],
-      ['06 / WITH LOVE','A place to keep talking when someone is no longer here.','#f4f1e9'],
-      ['07 / FINGERPOINTER','A clever nudge toward the card that gives you more back.','#839c72'],
-      ['08 / STRAIGHT TO HELL','A chicken. A basket. One very long way out of hell.','#584b91','text-[#f3f1eb]']
+      {label:'01 / CHILDREN’S BOOK',description:'A small story for children facing something much too big.',color:'#ff614d',href:'https://www.diabetesandme.org/uploads/1/3/1/3/131326346/teamhelping_book_freedownload.pdf'},
+      {label:'02 / SLEEPWELL',description:'A sleep coach that helps you stop trying so hard to sleep.',color:'#17201d',textClass:'text-[#f3f1eb]',type:'iOS'},
+      {label:'03 / FOXLEY',description:'A clever little fox for decisions that refuse to make themselves.',color:'#e6c5f1',type:'iOS'},
+      {label:'04 / RESOLVE',description:'A place to turn tangled problems into a clear next move.',color:'#b9dcf6',type:'iOS'},
+      {label:'05 / BIXLEY',description:'A travel companion that notices what your itinerary missed.',color:'#f5b928',type:'iOS'},
+      {label:'06 / WITH LOVE',description:'A place to keep talking when someone is no longer here.',color:'#f4f1e9',type:'iOS'},
+      {label:'07 / FINGERPOINTER',description:'A clever nudge toward the card that gives you more back.',color:'#839c72',type:'iOS'},
+      {label:'08 / STRAIGHT TO HELL',description:'A chicken. A basket. One very long way out of hell.',color:'#584b91',textClass:'text-[#f3f1eb]',type:'iOS'}
     ];
-    document.getElementById('experiment-wall').innerHTML = experiments.map((item,i)=>`<article class="experiment aspect-[4/5] overflow-hidden p-4 md:p-5 ${item[3]||''}" style="background:${item[2]}"><div class="flex h-full flex-col justify-between gap-3"><span class="text-[.62rem] leading-tight sm:text-xs">${item[0]}</span><p class="text-base leading-[1.05] sm:text-xl sm:leading-[.95]">${item[1]}</p><span class="text-3xl">${i%2?'●':'↗'}</span></div></article>`).join('');
+    document.getElementById('experiment-wall').innerHTML = experiments.map((item)=>{const tag=item.href?'a':'article';const linkAttributes=item.href?` href="${item.href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${item.label.replace(/^\d+ \/ /,'')} PDF"`:'';return `<${tag}${linkAttributes} class="experiment group aspect-[4/5] overflow-hidden p-4 md:p-5 ${item.textClass||''}" style="background:${item.color}"><div class="flex h-full flex-col justify-between gap-3"><span class="text-[.62rem] leading-tight sm:text-xs">${item.label}</span><p class="text-base leading-[1.05] sm:text-xl sm:leading-[.95]">${item.description}</p><span class="flex items-center justify-between text-[.62rem] uppercase tracking-[.14em] sm:text-xs"><span>${item.type||'PDF'}</span><span class="text-3xl leading-none transition-transform duration-300 group-hover:translate-x-1">↗</span></span></div></${tag}>`}).join('');
     const history = [['Then',"I've spent the last decade at Microsoft helping imagine and build the future of productivity - across products, platforms and now AI."],['Along the way','Before that, I was making things too. Different technology. Same instinct.'],['Now','See possibility -> make it tangible -> make it better.']];
     document.getElementById('history').innerHTML = history.map((item,i)=>`<div class="grid grid-cols-[5rem_1fr] gap-4 border-t ${i===2?'border-b':''} border-[#17201d]/20 py-6 md:grid-cols-[9rem_1fr]"><span class="text-xs text-[#17201d]/45">${item[0]}</span><p class="text-lg">${item[1]}</p></div>`).join('');
 
